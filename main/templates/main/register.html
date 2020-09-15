@@ -1,0 +1,16 @@
+
+
+{% block content %}
+
+<br>
+<form method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+
+	<button type="Submit">Register</button>
+</form>
+
+If you already have an acc, <a href="/login">Login</a>
+
+{% endblock %}
+
