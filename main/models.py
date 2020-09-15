@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+
 # Create your models here.
 class Tutorial(models.Model):
     Tutorial_title = models.CharField(max_length = 200)

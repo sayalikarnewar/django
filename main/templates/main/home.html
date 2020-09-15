@@ -1,0 +1,10 @@
+{%  %}
+
+
+{% for tut in tutorials %}
+	
+	<p>{{tut.Tutorial_title}}</p>
+	<p>{{tut.Tutorial_content|safe}}</p>
+	<p>{{tut.Tutorial_published}}</p>
+<br><br>
+{% endfor %}
