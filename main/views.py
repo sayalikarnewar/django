@@ -41,14 +41,14 @@ def register(request):
 def logout_req(request):
     logout(request)
     messages.info(request, 'Logout successfully')
-    return redirect("main : homepage")
+    return redirect("main:homepage")
 
 def login_req(request):
     if request.method ==  "POST":
         form = AuthenticationForm(request = request, data = request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
-            password = form.cleaned_date.get("password")
+            password = form.cleaned_data.get("password")
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request,user)
