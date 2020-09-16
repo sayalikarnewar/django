@@ -19,7 +19,7 @@ class TutorialCategory(models.Model):
 class TutorialSeries(models.Model):
     Tutorial_series = models.CharField(max_length=200, default=1)
 
-    Tutorial_category = models.ForeignKey(TutorialCategory, default=1, verbose_name="Category", on_delete=models.SET_DEFAULT)
+    Tutorial_category = models.ForeignKey(TutorialCategory, default=1, verbose_name="Category", on_delete=models.CASCADE)
     Series_summary = models.CharField(max_length=200, default=1)
 
     class meta:
@@ -32,11 +32,11 @@ class TutorialSeries(models.Model):
 
 
 class Tutorial(models.Model):
-    Tutorial_title = models.CharField(max_length = 200, default=1)
+    Tutorial_title = models.CharField(max_length = 200)
     Tutorial_content = models.TextField()
     Tutorial_published = models.DateTimeField("date published", default =datetime.now())
 
-    Tutorial_series = models.ForeignKey(TutorialSeries, default=1, verbose_name="Series", on_delete=models.SET_DEFAULT)
+    Tutorial_series = models.ForeignKey(TutorialSeries, default=1, verbose_name="Series", on_delete=models.CASCADE)
 
 
     def __str__(self):
