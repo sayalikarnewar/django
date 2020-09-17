@@ -1,18 +1,19 @@
-{% extends 'main/header.html' %}
+
+
+{% extends "main/home.html" %}
 
 {% block content %}
-
-    
-        {% for tut, partone in part_ones.items %}
-
+<div style="background-color:chartreuse;">
+    {% for c,firstpart in first_p.items %}
+        <a href="{{firstpart}}",style="color=red">
             
-                <a href="{{partone}}", style="color:#000">
-                   
-                            <div>{{tut.tutorial_series}}</div>
-                            <p>{{tut.series_summary}}</p>
-                       
-                </a>
-          
-        {% endfor %}
-  
+            <div style="background-color: cyan;">
+                <div>{{tut.tutorial_series}}</div>
+                <p>{{tut.series_summary}}</p>
+            
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
 {% endblock %}

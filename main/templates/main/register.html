@@ -1,16 +1,13 @@
-
+{% extends "main/home.html" %}
 
 {% block content %}
-
-<br>
-<form method="POST">
-	{% csrf_token %}
-	{{form.as_p}}
-
-	<button type="Submit">Register</button>
-</form>
-
-If you already have an acc, <a href="/login">Login</a>
-
+    <div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button style="background-color: rgb(165, 142, 42);height:50px;width:100px;align-self: center;" type="submit">Register</button>
+        <p>if you already have account please <a href="/login">Login</a></p>
+       
+    </form>
+    </div>
 {% endblock %}
-

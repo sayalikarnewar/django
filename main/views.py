@@ -10,8 +10,8 @@ from .forms import NewUserForm
 
 def homepage(request):
 	return render(request=request,
-                  template_name='main/home.html',
-                  context={"main": Tutorial.objects.all})
+                  template_name='main/categories.html',
+                  context={"categories": TutorialCategory.objects.all})
 
 
 def register(request):
@@ -65,3 +65,13 @@ def login_req(request):
                           context={"form":form})
 
 
+def single_slug(request, single_slug):
+    categories = [c.category_slug for c in TutorialCategory.objects.all()]
+    if single_slug in categories:
+      return HttpResponse(f"{single_slug} is a category")
+
+    tutorials = [t.tutorial_slug for t in Tutorial.objects.all()]
+    if single_slug in tutorials:
+      return HttpResponse(f"{single_slug} is a Tutorial")
+
+    return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")

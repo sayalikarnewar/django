@@ -1,25 +1,13 @@
-{% extends 'main/header.html' %}
+{% extends "main/home.html" %}
 
 {% block content %}
-
-    <div class="container">
-        <form method="POST">
+    <div>
+    <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Login</button>
-        </form>
-        <a href="/register">register</a>
+        <button style="background-color: rgb(163, 165, 42);height:50px;width:100px;align-self: center;" type="submit">Login</button>
+        <p>if not have account please <a href="/register">Register</a></p>
+       
+    </form>
     </div>
-
-
-
-{% for tut in tutorials %}
-	
-	<p>{{tut.tutorial_title}}</p>
-	<p>{{tut.tutorial_published}}</p>
-
-{% endfor %}  
-
-
-
 {% endblock %}

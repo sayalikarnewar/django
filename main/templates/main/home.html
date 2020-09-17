@@ -1,15 +1,36 @@
-{% extends "main/header.html" %}
+<head>
+    {% load static %}
+    <link href="{% static 'tinymce/css/prism.css'}" rel="stylesheet">
+</head>
+<body>
+<div>
+    <nav>
+        <ul style="display:inline-flex;">
+            <li style="margin-left: 20%;"><a href="">Home</a></li>
+            {% if user.is_authenticated %}
+                <li style="margin-left: 20%;"><a href="/account">{{user.username}}</a></li>
+                <li style="margin-left: 20%;"><a href="/logout">Logout</a></li>
+            {% else %}
+                <li style="margin-left: 20%;"><a href="/register">Register</a></li>
+                <li style="margin-left: 20%;"><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
 
+{% if messages %}
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+            <script>M.toast({html:"{{msg}}",classes : 'green rounded'})</script>
+        {% endif %}
+        {% if msg.tags == 'error' %}
+            <script>M.toast({html:"{{msg}}",classes : 'red rounded'})</script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 {% block content %}
-
-
-{% for tut in tutorials %}
-	
-	<p>{{tut.tutorial_title}}</p>
-	<p>{{tut.tutorial_published}}</p>
-
-{% endfor %}  
-
-
-
 {% endblock %}
+</body>
+
+
+<script src="{% static tinymce/js/prism.js"></script>
