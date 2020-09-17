@@ -77,6 +77,7 @@ def login_req(request):
 #     return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
 
 def single_slug(request, single_slug):
+    # first check to see if the url is in categories.
 
     categories = [c.category_slug for c in TutorialCategory.objects.all()]
     if single_slug in categories:
@@ -89,4 +90,4 @@ def single_slug(request, single_slug):
 
         return render(request=request,
                       template_name='main/category.html',
-                      context={"tutorial_series": matching_series, "firstpart": series_urls})
+                      context={"tutorial_series": matching_series, "part_ones": series_urls})
