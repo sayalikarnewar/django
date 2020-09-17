@@ -65,13 +65,28 @@ def login_req(request):
                           context={"form":form})
 
 
+# def single_slug(request, single_slug):
+#     categories = [c.category_slug for c in TutorialCategory.objects.all()]
+#     if single_slug in categories:
+#       return HttpResponse(f"{single_slug} is a category")
+
+#     tutorials = [t.tutorial_slug for t in Tutorial.objects.all()]
+#     if single_slug in tutorials:
+#       return HttpResponse(f"{single_slug} is a Tutorial")
+
+#     return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
+
 def single_slug(request, single_slug):
+
     categories = [c.category_slug for c in TutorialCategory.objects.all()]
     if single_slug in categories:
-      return HttpResponse(f"{single_slug} is a category")
+        matching_series = TutorialSeries.objects.filter(tutorial_category__category_slug=single_slug)
+        series_urls = {}
 
-    tutorials = [t.tutorial_slug for t in Tutorial.objects.all()]
-    if single_slug in tutorials:
-      return HttpResponse(f"{single_slug} is a Tutorial")
+        for m in matching_series.all():
+            part_one = Tutorial.objects.filter(tutorial_series__tutorial_series=m.tutorial_series).earliest("tutorial_published")
+            series_urls[m] = part_one.tutorial_slug
 
-    return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
+        return render(request=request,
+                      template_name='main/category.html',
+                      context={"tutorial_series": matching_series, "firstpart": series_urls})
