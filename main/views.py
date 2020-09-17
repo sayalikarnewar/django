@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import  Tutorial
+from .models import  Tutorial, TutorialCategory, TutorialSeries
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect
@@ -9,9 +9,9 @@ from .forms import NewUserForm
 # Create your views here.
 
 def homepage(request):
-	return render(request = request, 
-		template_name = "main/home.html", 
-		context = {"tutorials" : Tutorial.objects.all})
+	return render(request=request,
+                  template_name='main/home.html',
+                  context={"main": Tutorial.objects.all})
 
 
 def register(request):
@@ -63,4 +63,5 @@ def login_req(request):
     return render(request = request,
                           template_name = "main/login.html",
                           context={"form":form})
+
 

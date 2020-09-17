@@ -1,2 +1,15 @@
 {% extends 'main/header.html' %}
 
+{% block content %}
+
+
+{% for tut in tutorials %}
+	
+	<p>{{tut.tutorial_title}}</p>
+	<p>{{tut.tutorial_published}}</p>
+
+{% endfor %}  
+
+
+
+{% endblock %}

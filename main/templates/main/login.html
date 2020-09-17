@@ -10,4 +10,16 @@
         </form>
         <a href="/register">register</a>
     </div>
+
+
+
+{% for tut in tutorials %}
+	
+	<p>{{tut.tutorial_title}}</p>
+	<p>{{tut.tutorial_published}}</p>
+
+{% endfor %}  
+
+
+
 {% endblock %}

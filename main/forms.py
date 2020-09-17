@@ -12,7 +12,7 @@ class NewUserForm(UserCreationForm):
 
     def save(self, commit= True):
         user = super(NewUserForm, self).save(commit=False)
-        user.email = self.cleaned_date["email"]
+        user.email = self.cleaned_data.get["email"]
         if commit:
             user.save()
         return user        

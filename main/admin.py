@@ -11,9 +11,9 @@ class TutorialAdmin(admin.ModelAdmin):
 				#"Tutorial_content"]
 
 	fieldsets = [
-		("Title/date",{"fields" : ["Tutorial_title", "Tutorial_published"]}),
-		("Series", {"fields": ["Tutorial_series"]}),
-		("Content", {"fields" : ["Tutorial_content"]}),
+		("Title/date",{"fields" : ["tutorial_title", "tutorial_published"]}),
+		("Series", {"fields": ["tutorial_series"]}),
+		("Content", {"fields" : ["tutorial_content"]}),
 	]
 
 	formfield_overrides = {

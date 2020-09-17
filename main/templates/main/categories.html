@@ -1,0 +1,17 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+    
+        {% for cat in categories %}
+          
+                <a href="{{cat.category_slug}}", style="color:rgb(182, 34, 34)">
+                   
+                            {{cat.tutorial_category}}
+                            <p>{{cat.category_summary}}</p>
+                        
+                </a>
+         
+        {% endfor %}
+
+{% endblock %}

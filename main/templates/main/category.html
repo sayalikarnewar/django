@@ -1,0 +1,18 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+    
+        {% for tut, partone in part_ones.items %}
+
+            
+                <a href="{{partone}}", style="color:#000">
+                   
+                            <div>{{tut.tutorial_series}}</div>
+                            <p>{{tut.series_summary}}</p>
+                       
+                </a>
+          
+        {% endfor %}
+  
+{% endblock %}
